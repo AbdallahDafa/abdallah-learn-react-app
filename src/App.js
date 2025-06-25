@@ -1,20 +1,19 @@
  
-import './App.css';
- 
+import './App.css'; 
+
+import { nameUser, ageUser, message } from "./person.js"; 
 
   function App(){
     return (
       <div>
-        <h1>Welcome to App.js File</h1>
-        <button onClick={redirectToLearn}>Go to Learn Page</button>
+        <h1>Welcome to App.js File</h1> 
+          <h3>{ nameUser }</h3> 
+          <h3>{ message() }</h3> 
       </div>
     );
   }
 
-  const redirectToLearn = () => {
-    window.location.href = './learn.html'; // or full path if hosted elsewhere
-  };
-
+ 
    
 
 export default App;
