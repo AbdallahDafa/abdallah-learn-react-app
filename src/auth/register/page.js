@@ -7,6 +7,8 @@ import FloatingInput from "../../components/textfield/TextFieldFloatingLabel.mod
 
 export function RegisterScreen() {
   const [name, setName] = useState("");
+  const [nameError, setNameError] = useState('');
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [myCar, setMyCar] = useState("");
@@ -18,6 +20,16 @@ export function RegisterScreen() {
   const handleSubmit = (event) => {
     event.preventDefault(); // prevent page reload 
     console.log("handleSubmit() - in with:", { name, email, password, myCar });
+
+    /// validate : name 
+    if (!name.trim()) {
+          setNameError('Username is required');
+          return;
+        } else {
+          setNameError('');
+    }
+
+
   };
 
   return (
@@ -39,6 +51,7 @@ export function RegisterScreen() {
           id="username"
           label="Username"
           value={name}
+          error={ nameError }
           onChange={(e) => setName(e.target.value)}
         />
         <div style={ { margin: "15px"  }}/>
