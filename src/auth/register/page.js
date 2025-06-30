@@ -23,14 +23,14 @@ export function RegisterScreen() {
   return (
     <div
       style={{
-        padding: "20px",
-        backgroundColor: "green",
+        padding: "20px", 
         display: "inline-block",
       }}
     > 
 
         <h5 className={ styleText.w900 }>Register</h5> 
-       <h1 className={ styleText.w900 } >test</h1>
+        <div style={ { margin: "30px"  }}/>
+
 
         <input
           placeholder="enter name"
@@ -38,29 +38,35 @@ export function RegisterScreen() {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <div />
+        <div style={ { margin: "15px"  }}/>
+
+
         <input
           placeholder="enter email"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <div />
+        <div style={ { margin: "15px"  }}/>
+
+
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <div />
+        <div style={ { margin: "15px"  }}/>
+
         <select value={myCar} onChange={handleSelectCar}>
           <option value="">Select car</option>
           <option value="Ford">Ford</option>
           <option value="Volvo">Volvo</option>
           <option value="Fiat">Fiat</option>
         </select>
-        <div />
-        <h5>selected: {myCar}</h5>
+        <div style={ { margin: "15px"  }}/>
+
+        
         <button className={styleBtn.buttonPrimary} onClick={handleSubmit}>
           Register Now
         </button>

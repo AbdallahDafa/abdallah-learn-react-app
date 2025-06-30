@@ -20,14 +20,16 @@
   font-family: 'Cairo-Black';
   color: #3a16c7; /* 👈 Sets the text color */
   font-size: 22px;  
-  margin: 0px;
+  margin: 0;       /* fix space arround text */ 
+  line-height: 1;  /* fix space arround text*/
 }
  
 .w400 {
   font-family: 'Cairo';
   color: #3a16c7; /* 👈 Sets the text color */
   font-size: 18px; 
-  margin: 0px;
+  margin: 0;       /* fix space arround text */ 
+  line-height: 1;  /* fix space arround text*/
 }
  
 
@@ -35,6 +37,7 @@
   font-family: 'Cairo-Light';
   color: #3a16c7; /* 👈 Sets the text color */
   font-size: 15px; 
-  margin: 0px;
+  margin: 0;       /* fix space arround text */ 
+  line-height: 1;  /* fix space arround text*/
 }
  
