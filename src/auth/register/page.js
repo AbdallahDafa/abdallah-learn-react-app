@@ -2,7 +2,8 @@ import { useState } from "react";
 
 import styleBtn from "../../styles/button_custom.module.css";
 import styleText from "../../styles/text_custom.module.css";
-import styleInputfield from "../../styles/text_custom.module.css";
+import FloatingInput from "../../components/textfield/TextFieldFloatingLabel.module";
+
 
 export function RegisterScreen() {
   const [name, setName] = useState("");
@@ -15,8 +16,7 @@ export function RegisterScreen() {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // prevent page reload
-    // alert(`name: ${name} /email: ${email}`)
+    event.preventDefault(); // prevent page reload 
     console.log("handleSubmit() - in with:", { name, email, password, myCar });
   };
 
@@ -24,17 +24,20 @@ export function RegisterScreen() {
     <div
       style={{
         padding: "20px", 
-        display: "inline-block",
-      }}
-    > 
+        display: "block", 
+        backgroundColor : "#FEECD0"
+      }}  > 
 
-        <h5 className={ styleText.w900 }>Register</h5> 
-        <div style={ { margin: "30px"  }}/>
+        <h1 className={ styleText.w900 } style={ {
+            textAlign: "center"
+        }}>Register</h1> 
+        <div style={ { margin: "30px" ,
+         }}/>
 
 
-        <input
-          placeholder="enter name"
-          type="text"
+        <FloatingInput
+          id="username"
+          label="Username"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
