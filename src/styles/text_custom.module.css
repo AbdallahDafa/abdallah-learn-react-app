@@ -1,0 +1,40 @@
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('../../public/fonts/cairo/Cairo-Regular.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Cairo-Black';
+  src: url('../../public/fonts/cairo/Cairo-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Cairo-Light';
+  src: url('../../public/fonts/cairo/Cairo-Light.ttf') format('truetype');
+}
+
+
+.w900 {
+  font-family: 'Cairo-Black';
+  color: #3a16c7; /* 👈 Sets the text color */
+  font-size: 22px;  
+  margin: 0px;
+}
+ 
+.w400 {
+  font-family: 'Cairo';
+  color: #3a16c7; /* 👈 Sets the text color */
+  font-size: 18px; 
+  margin: 0px;
+}
+ 
+
+.w300 {
+  font-family: 'Cairo-Light';
+  color: #3a16c7; /* 👈 Sets the text color */
+  font-size: 15px; 
+  margin: 0px;
+}
+ 

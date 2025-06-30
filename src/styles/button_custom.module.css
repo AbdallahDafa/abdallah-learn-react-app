@@ -1,0 +1,12 @@
+.buttonPrimary {
+  padding: 10px;
+  background-color: blue; /* 👈 Sets the backgroundd color */
+  color: white; /* 👈 Sets the text color */
+  border-radius: 8px ;
+}
+
+.buttonSecandary {
+  padding: 10px;
+  background-color: gray;
+    color: blue; /* 👈 Sets the text color */
+}
