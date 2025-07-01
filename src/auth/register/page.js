@@ -5,6 +5,7 @@ import styleText from "../../styles/text_custom.module.css";
 import FloatingInput from "../../components/text_input/floating_label/FloatingLabelTextInput.module";
 import UnberlineTextInput from "../../components/text_input/underline/UnberlineTextInput.module";
 import InputValidator from "../../lib/validate/InputValidator";
+import "./style.css"
 
 export function RegisterScreen() {
   const [name, setName] = useState("");
@@ -40,13 +41,26 @@ export function RegisterScreen() {
         backgroundColor : "#FEECD0"
       }}  > 
 
+        
         <h1 className={ styleText.w900 } style={ {
             textAlign: "center"
         }}>Register</h1> 
         <div style={ { margin: "30px" ,
          }}/>
 
-
+          <div class="box">
+            <span class="center-middle">Center</span>
+            <span class="top-left">Top Left</span>
+            <span class="top-right">Top Right</span>
+            <span class="bottom-left">Bottom Left</span>
+            <span class="bottom-right">Bottom Right</span>
+            <span class="top-center">Top Center</span>
+            <span class="right-center">Right Center</span>
+            <span class="bottom-center">Bottom Center</span>
+            <span class="left-center">Left Center</span>
+            
+          </div>
+        
         <FloatingInput
           id="username"
           label="Username"

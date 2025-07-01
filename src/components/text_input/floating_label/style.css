@@ -1,10 +1,5 @@
-.form-group {
-  position: relative;
-  /* margin: 00px 0; */
-  width: 100%;
-  max-width: 300px;
-}
 
+/************************ input */
 
 .form-input {
   width: 100%;
@@ -16,12 +11,24 @@
   background-color: white;
 }
 
+/************************ relative */
+
+.form-group {
+  position: relative; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  max-width: 300px;
+}
+
 .form-label {
-  position: absolute;
-  top: 0px; 
-  left: 0px;
-  color: #777;
-  background-color: white; 
+    position: absolute;  
+    /* transform: translate(  -50%, -50% );  */
+    top: 0%;   
+    transform: translate(  0% , 0% );
+ 
+
+    color: green;   
 }
 
 /************************ error */
