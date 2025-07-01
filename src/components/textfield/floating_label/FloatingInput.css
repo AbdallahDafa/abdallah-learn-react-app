@@ -36,6 +36,7 @@
 
 
 /************************ error */
+
 .input-error {
   border-color: red;
 }
@@ -45,4 +46,15 @@
   font-size: 12px;
   margin-top: 4px;
   margin-left: 4px;
+}
+
+/************************ focus textfield  */
+
+.form-input:focus {
+  border-color: green;
+}
+
+/* Optional: make the floating label green when focused too */
+.form-input:focus + .form-label {
+  color: green;
 }

@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import styleBtn from "../../styles/button_custom.module.css";
 import styleText from "../../styles/text_custom.module.css";
-import FloatingInput from "../../components/textfield/TextFieldFloatingLabel.module";
+import FloatingInput from "../../components/textfield/floating_label/TextFieldFloatingLabel.module";
 
 
 export function RegisterScreen() {
@@ -52,7 +52,11 @@ export function RegisterScreen() {
           label="Username"
           value={name}
           error={ nameError }
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => {
+          setNameError(""); //clear previous error
+          setName(e.target.value); 
+          }}
+          //onChange={(e) => setName(e.target.value)}
         />
         <div style={ { margin: "15px"  }}/>
 
