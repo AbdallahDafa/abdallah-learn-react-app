@@ -1,5 +1,5 @@
 import React from 'react';
-import './FloatingInput.css';
+import './style.css';
 
 /***
  * ------------- example

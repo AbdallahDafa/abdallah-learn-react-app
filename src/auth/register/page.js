@@ -2,14 +2,17 @@ import { useState } from "react";
 
 import styleBtn from "../../styles/button_custom.module.css";
 import styleText from "../../styles/text_custom.module.css";
-import FloatingInput from "../../components/textfield/floating_label/TextFieldFloatingLabel.module";
-
+import FloatingInput from "../../components/text_input/floating_label/FloatingLabelTextInput.module";
+import UnberlineTextInput from "../../components/text_input/underline/UnberlineTextInput.module";
+import InputValidator from "../../lib/validate/InputValidator";
 
 export function RegisterScreen() {
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState('');
 
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState('');
+
   const [password, setPassword] = useState("");
   const [myCar, setMyCar] = useState("");
 
@@ -21,13 +24,10 @@ export function RegisterScreen() {
     event.preventDefault(); // prevent page reload 
     console.log("handleSubmit() - in with:", { name, email, password, myCar });
 
-    /// validate : name 
-    if (!name.trim()) {
-          setNameError('Username is required');
-          return;
-        } else {
-          setNameError('');
-    }
+    /// set error message missed:  
+    if ( ! InputValidator.isName( name) ) { setNameError('Username is required');   }  
+    if (! InputValidator.isEmail(email )) { setEmailError('Email is required'); }  
+
 
 
   };
@@ -61,13 +61,28 @@ export function RegisterScreen() {
         <div style={ { margin: "15px"  }}/>
 
 
-        <input
+
+        <UnberlineTextInput
+          id="email"
+          label="email"
+          value={email}
+          error={ emailError }
+          onChange={(e) => {
+          setEmailError(""); //clear previous error
+          setEmail(e.target.value); 
+          }}
+          //onChange={(e) => setName(e.target.value)}
+        />
+        <div style={ { margin: "15px"  }}/>
+
+
+        {/* <input
           placeholder="enter email"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <div style={ { margin: "15px"  }}/>
+        <div style={ { margin: "15px"  }}/> */}
 
 
         <input
