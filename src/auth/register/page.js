@@ -48,19 +48,7 @@ export function RegisterScreen() {
         <div style={ { margin: "30px" ,
          }}/>
 
-          <div class="box">
-            <span class="center-middle">Center</span>
-            <span class="top-left">Top Left</span>
-            <span class="top-right">Top Right</span>
-            <span class="bottom-left">Bottom Left</span>
-            <span class="bottom-right">Bottom Right</span>
-            <span class="top-center">Top Center</span>
-            <span class="right-center">Right Center</span>
-            <span class="bottom-center">Bottom Center</span>
-            <span class="left-center">Left Center</span>
-            
-          </div>
-        
+ 
         <FloatingInput
           id="username"
           label="Username"

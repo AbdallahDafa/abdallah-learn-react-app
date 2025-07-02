@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css';
+import { useState } from "react";
 
 /***
  * ------------- example
@@ -18,19 +19,45 @@ import './style.css';
           }}
 
  */
+ 
 const FloatingInput = ({ label, value, onChange, type = "text", id , error }) => {
+
+  const [valueUpdate, setValueUpdate] = useState(  "");
+
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleFocus = () => {
+    console.log("Input handleFocus");
+    setIsFocused(true);
+  };
+
+  const handleUnFocus = () => {
+    console.log("Input handleUnFocus");
+    setIsFocused(false);
+  };
+ 
   return (
     <div className="form-group">
       <input
         type={type}
         id={id}
-        value={value}
-        onChange={ onChange }
+        value={valueUpdate}
+        onChange={ (e) => {
+            const newValue = e.target.value;
+            setValueUpdate( newValue);
+            
+            console.info("FloatingInput - onChange: ", { newValue,  isFocused });
+ 
+        } }
+        onFocus={handleFocus}
+        onBlur={handleUnFocus}
         className="form-input"
-        placeholder=""
+        placeholder={label}
       />
-      <label htmlFor={id} className="form-label">{label}</label>
-
+      <div className="label-container-floated">
+        <h1 className='label-text'>{  isFocused && label}</h1>
+      </div>
+ 
       {error && <p className="error-text">{error}</p>}
       
     </div>
