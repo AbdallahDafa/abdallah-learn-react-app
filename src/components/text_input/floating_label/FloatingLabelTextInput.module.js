@@ -55,7 +55,7 @@ const FloatingInput = ({ label, value, onChange, type = "text", id , error }) =>
         placeholder={label}
       />
       <div className={style.labelContainer}>
-        <h1 className={style.labelText}>{  (isFocused && valueUpdate  )  && label}</h1>
+        <h1 className={style.labelText}>{  (  valueUpdate  )  && label}</h1>
       </div>
  
       {error && <p className={ style.errorText}  >{error}</p>}
