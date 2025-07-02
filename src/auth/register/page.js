@@ -96,6 +96,9 @@ export function RegisterScreen() {
         </select>
         <div style={ { margin: "15px"  }}/>
 
+        <div>{ CarExampleUpdateColor() }</div>
+        <div style={ { margin: "15px"  }}/>
+
         
         <button className={styleBtn.buttonPrimary} onClick={handleSubmit}>
           Register Now
@@ -105,3 +108,38 @@ export function RegisterScreen() {
     </div>
   );
 }
+
+
+
+ 
+function CarExampleUpdateColor() {
+  const [car, setCar] = useState({
+    brand: "Ford",
+    model: "Mustang",
+    year: "1964",
+    color: "red"
+  });
+
+  const updateColor = () => {
+    console.info("updateColor() - beore edition: ", { car });
+    setCar(previousState => {
+      return { ...previousState, color: "blue" }
+    });
+    console.info("updateColor() - after edit object: ", { car });
+  }
+
+  return (
+    <>
+      <h1>My {car.brand}</h1>
+      <p>
+        It is a {car.color} {car.model} from {car.year}.
+      </p>
+      <button
+        type="button"
+        onClick={updateColor}
+      >Blue</button>
+    </>
+  )
+}
+
+
