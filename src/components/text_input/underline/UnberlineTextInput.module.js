@@ -1,12 +1,6 @@
 import React from 'react';
-import './style.css';
-
-/***
- * ------------- example
+import './UnberlineTextInput.css';
  
- 
-
- */
 const UnberlineTextInput = ({ label, value, onChange, type = "text", id , error }) => {
   return (
     <div className="form-group">

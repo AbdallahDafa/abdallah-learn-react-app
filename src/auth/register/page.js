@@ -59,9 +59,9 @@ export function RegisterScreen() {
           setName(e.target.value); 
           }}
           //onChange={(e) => setName(e.target.value)}
-        />
+        /> 
         <div style={ { margin: "15px"  }}/>
-
+ 
 
 
         <UnberlineTextInput
@@ -77,14 +77,7 @@ export function RegisterScreen() {
         />
         <div style={ { margin: "15px"  }}/>
 
-
-        {/* <input
-          placeholder="enter email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <div style={ { margin: "15px"  }}/> */}
+ 
 
 
         <input

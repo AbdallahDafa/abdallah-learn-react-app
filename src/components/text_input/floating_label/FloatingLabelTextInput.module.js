@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import  style from  "./FloatingLabelTextInput.module.css";
 import { useState } from "react";
 
 /***
@@ -37,7 +37,7 @@ const FloatingInput = ({ label, value, onChange, type = "text", id , error }) =>
   };
  
   return (
-    <div className="form-group">
+    <div className={style.formGroup}>
       <input
         type={type}
         id={id}
@@ -51,14 +51,14 @@ const FloatingInput = ({ label, value, onChange, type = "text", id , error }) =>
         } }
         onFocus={handleFocus}
         onBlur={handleUnFocus}
-        className="form-input"
+        className={ style.formInput  }
         placeholder={label}
       />
-      <div className="label-container-floated">
-        <h1 className='label-text'>{  isFocused && label}</h1>
+      <div className={style.labelContainer}>
+        <h1 className={style.labelText}>{  (isFocused && valueUpdate  )  && label}</h1>
       </div>
  
-      {error && <p className="error-text">{error}</p>}
+      {error && <p className={ style.errorText}  >{error}</p>}
       
     </div>
   );
