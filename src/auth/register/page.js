@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import styleBtn from "../../styles/button_custom.module.css";
 import styleText from "../../styles/text_custom.module.css";
@@ -77,8 +77,6 @@ export function RegisterScreen() {
         />
         <div style={ { margin: "15px"  }}/>
 
- 
-
 
         <input
           type="password"
@@ -96,7 +94,7 @@ export function RegisterScreen() {
         </select>
         <div style={ { margin: "15px"  }}/>
 
-        <div>{ CarExampleUpdateColor() }</div>
+        <div>{ Timer() }</div>
         <div style={ { margin: "15px"  }}/>
 
         
@@ -111,35 +109,23 @@ export function RegisterScreen() {
 
 
 
- 
-function CarExampleUpdateColor() {
-  const [car, setCar] = useState({
-    brand: "Ford",
-    model: "Mustang",
-    year: "1964",
-    color: "red"
-  });
+function Timer() {
+  const [count, setCount] = useState(0);
 
-  const updateColor = () => {
-    console.info("updateColor() - beore edition: ", { car });
-    setCar(previousState => {
-      return { ...previousState, color: "blue" }
-    });
-    console.info("updateColor() - after edit object: ", { car });
-  }
+  useEffect(() => {
 
-  return (
-    <>
-      <h1>My {car.brand}</h1>
-      <p>
-        It is a {car.color} {car.model} from {car.year}.
-      </p>
-      <button
-        type="button"
-        onClick={updateColor}
-      >Blue</button>
-    </>
-  )
+    /// functions
+    setTimeout(() => {
+      setCount((count) => count + 1);
+    }, 1000);
+
+
+
+  },  [] );
+
+  return <h1>I've rendered {count} times!</h1>;
 }
+
+ 
 
 
