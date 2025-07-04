@@ -34,30 +34,48 @@ class InputValidator {
     console.log("Password is valid.");
   }
    */
-  static validatePassword(password) {
-  console.log("validatePassword() - password",  {password} );
-  const errors = [];
+  static validatePasswordStrong(password) {
+    console.log("validatePassword() - start search: " + password);
+    const errors = [];
 
-  if( password === null ||  password === "" ) {
-    errors.push("Password is required.");
+    if( password === null ||  password === "" ) {
+      errors.push("Password is required.");
 
-  } else if (!password) {
-    errors.push("Password is required.");
-  } else  if (password.length < 8) {
-    errors.push("Password must be at least 8 characters.");
-  } else  if (!/[A-Z]/.test(password)) {
-    errors.push("Password must include at least one uppercase letter.");
-  }  else  if (!/[a-z]/.test(password)) {
-    errors.push("Password must include at least one lowercase letter.");
-  } else if (!/[0-9]/.test(password)) {
-    errors.push("Password must include at least one number.");
-  } else if (!/[!@#$%^&*]/.test(password)) {
-    errors.push("Password must include at least one special character (!@#$%^&*).");
-  }
-  return {
-    isValid: errors.length === 0,
-    errors
-  };
+    } else if (!password) {
+      errors.push("Password is required.");
+    } else  if (password.length < 8) {
+      errors.push("Password must be at least 8 characters.");
+    } else  if (!/[A-Z]/.test(password)) {
+      errors.push("Password must include at least one uppercase letter.");
+    }  else  if (!/[a-z]/.test(password)) {
+      errors.push("Password must include at least one lowercase letter.");
+    } else if (!/[0-9]/.test(password)) {
+      errors.push("Password must include at least one number.");
+    } else if (!/[!@#$%^&*]/.test(password)) {
+      errors.push("Password must include at least one special character (!@#$%^&*).");
+    }
+
+    const isValidPassword = errors.length === 0;
+
+    console.log("validatePassword() - isValidPassword: " + isValidPassword);
+    return {
+      isValidPassword: isValidPassword ,
+      errors
+    };
+} 
+
+ static validatePasswordWeek(password) {
+    // console.log("validatePasswordWeek() - start search: " + password);
+    if( password === null ||  password === "" ) {
+       return false;
+
+    } else if (!password) {
+      return false;
+    } else  if (password.length < 8) {
+      return false;
+    } 
+    /// good health
+    return true ;
 } 
 
 

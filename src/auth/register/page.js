@@ -7,8 +7,8 @@ import UnberlineTextInput from "../../components/text_input/underline/UnberlineT
 import InputValidator from "../../lib/validate/InputValidator";
 import "./style.css"
 import { RegisterProvider , MyContext} from "./RegsiterContext";
-
-  
+ 
+ 
 
 export function RegisterScreen() {
   
@@ -20,29 +20,27 @@ export function RegisterScreen() {
 }
 
 
-function BodyRegister() {
+
+const BodyRegister = () => {
+  const { state, setField } = useContext(MyContext);
+
   
-  const {form,setForm}  = useContext( MyContext); 
-
-
   const handleSubmit = (event) => {
     event.preventDefault(); // prevent page reload 
 
-    console.log("handleSubmit() - in with:", form );
+    console.log("handleSubmit() - in with:", state );
 
   //   var name =  form["name"] ;
   //   console.log("handleSubmit() - name:",  { name } );
     /// set error message missed:  
-   if ( ! InputValidator.isName( form.name ) ) {
-      setForm ('nameError',  'Username is required') ;   
+   if ( ! InputValidator.isName( state.name ) ) {
+      setField ('nameError',  'Username is required') ;   
     }   
 
        
-    const { isValidPassword, errors } = InputValidator.validatePassword( form.password  );
-    console.log("handleSubmit() - isValidPassword",  {isValidPassword} );
+    const isValidPassword = InputValidator.validatePasswordWeek( state.password  ); 
     if (!isValidPassword) {
-      setForm ('passwordError',   errors[0] ) ;   
-      // setPasswordError('password is required ' +  errors[0]);   
+      setField ('passwordError',     "Password required more than or equal 8 Character" ) ;    
     }   
 
 
@@ -50,7 +48,7 @@ function BodyRegister() {
 
 
   return (
-    <div
+       <div
       style={{
         padding: "20px", 
         display: "block", 
@@ -68,11 +66,11 @@ function BodyRegister() {
         <UnberlineTextInput
           id="username"
           label="username"
-          value={form.name}
-          error={ form.nameError  }
+          value={state.name}
+          error={ state.nameError  }
           onChange={(e) => {
-            setForm("nameError", "" );  //clear previous error
-            setForm("name", e.target.value); 
+            setField("nameError", "" );  //clear previous error
+            setField("name", e.target.value); 
           }} 
         />
         <div style={ { margin: "15px"  }}/>
@@ -83,25 +81,26 @@ function BodyRegister() {
           placeholder="Password" 
           onChange={(e) =>  {
             console.info("onChange password: " + e.target.value);
-            setForm( "passswordError" ,  "");
-            setForm( "passsword" , e.target.value);
+            console.info("onChange previous passwordError: " + state.passwordError );
+            setField( "passwordError" ,  "");
+            setField( "password" , e.target.value);
           }
           }
         />
-        { form.passwordError &&  <div> <span>{form.passwordError}</span> </div>  }
+        { state.passwordError &&  <div> <span>{state.passwordError}</span> </div>  }
         <div style={ { margin: "15px"  }}/>
 
    
-        
-        <button className={styleBtn.buttonPrimary} onClick={handleSubmit}>
+
+ 
+      <button className={styleBtn.buttonPrimary} onClick={handleSubmit}>
           Register Now
         </button>
         <div />
-    
-    </div>
-  ); 
 
-}
- 
- 
+
+    </div>
+  );
+};
+
 
