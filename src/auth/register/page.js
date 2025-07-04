@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState,   createContext, useContext} from "react";
 
 import styleBtn from "../../styles/button_custom.module.css";
 import styleText from "../../styles/text_custom.module.css";
@@ -6,32 +6,48 @@ import FloatingInput from "../../components/text_input/floating_label/FloatingLa
 import UnberlineTextInput from "../../components/text_input/underline/UnberlineTextInput.module";
 import InputValidator from "../../lib/validate/InputValidator";
 import "./style.css"
+import { RegisterProvider , MyContext} from "./RegsiterContext";
+
+  
 
 export function RegisterScreen() {
-  const [name, setName] = useState("");
-  const [nameError, setNameError] = useState('');
+  
+  return (
+    <RegisterProvider>
+      <BodyRegister/>
+    </RegisterProvider>
+  );
+}
 
-  const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState('');
 
-  const [password, setPassword] = useState("");
-  const [myCar, setMyCar] = useState("");
+function BodyRegister() {
+  
+  const {form,setForm}  = useContext( MyContext); 
 
-  const handleSelectCar = (event) => {
-    setMyCar(event.target.value);
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault(); // prevent page reload 
-    console.log("handleSubmit() - in with:", { name, email, password, myCar });
 
+    console.log("handleSubmit() - in with:", form );
+
+  //   var name =  form["name"] ;
+  //   console.log("handleSubmit() - name:",  { name } );
     /// set error message missed:  
-    if ( ! InputValidator.isName( name) ) { setNameError('Username is required');   }  
-    if (! InputValidator.isEmail(email )) { setEmailError('Email is required'); }  
+   if ( ! InputValidator.isName( form.name ) ) {
+      setForm ('nameError',  'Username is required') ;   
+    }   
 
+       
+    const { isValidPassword, errors } = InputValidator.validatePassword( form.password  );
+    console.log("handleSubmit() - isValidPassword",  {isValidPassword} );
+    if (!isValidPassword) {
+      setForm ('passwordError',   errors[0] ) ;   
+      // setPasswordError('password is required ' +  errors[0]);   
+    }   
 
 
   };
+
 
   return (
     <div
@@ -48,55 +64,34 @@ export function RegisterScreen() {
         <div style={ { margin: "30px" ,
          }}/>
 
- 
-        <FloatingInput
-          id="username"
-          label="Username"
-          value={name}
-          error={ nameError }
-          onChange={(e) => {
-          setNameError(""); //clear previous error
-          setName(e.target.value); 
-          }}
-          //onChange={(e) => setName(e.target.value)}
-        /> 
-        <div style={ { margin: "15px"  }}/>
- 
-
 
         <UnberlineTextInput
-          id="email"
-          label="email"
-          value={email}
-          error={ emailError }
+          id="username"
+          label="username"
+          value={form.name}
+          error={ form.nameError  }
           onChange={(e) => {
-          setEmailError(""); //clear previous error
-          setEmail(e.target.value); 
-          }}
-          //onChange={(e) => setName(e.target.value)}
+            setForm("nameError", "" );  //clear previous error
+            setForm("name", e.target.value); 
+          }} 
         />
         <div style={ { margin: "15px"  }}/>
 
 
         <input
           type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password" 
+          onChange={(e) =>  {
+            console.info("onChange password: " + e.target.value);
+            setForm( "passswordError" ,  "");
+            setForm( "passsword" , e.target.value);
+          }
+          }
         />
+        { form.passwordError &&  <div> <span>{form.passwordError}</span> </div>  }
         <div style={ { margin: "15px"  }}/>
 
-        <select value={myCar} onChange={handleSelectCar}>
-          <option value="">Select car</option>
-          <option value="Ford">Ford</option>
-          <option value="Volvo">Volvo</option>
-          <option value="Fiat">Fiat</option>
-        </select>
-        <div style={ { margin: "15px"  }}/>
-
-        <div>{ Timer() }</div>
-        <div style={ { margin: "15px"  }}/>
-
+   
         
         <button className={styleBtn.buttonPrimary} onClick={handleSubmit}>
           Register Now
@@ -104,28 +99,9 @@ export function RegisterScreen() {
         <div />
     
     </div>
-  );
+  ); 
+
 }
-
-
-
-function Timer() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-
-    /// functions
-    setTimeout(() => {
-      setCount((count) => count + 1);
-    }, 1000);
-
-
-
-  },  [] );
-
-  return <h1>I've rendered {count} times!</h1>;
-}
-
  
-
+ 
 
